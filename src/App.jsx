@@ -43,8 +43,8 @@ const App = () => {
     });
 
     return (
-      <section 
-        id={id} 
+      <section
+        id={id}
         ref={ref}
         className={`${Style.section} ${dark ? Style.darkSection : ''}`}
       >
@@ -66,41 +66,41 @@ const App = () => {
         {/* Header */}
         <header className={Style.header}>
           <nav className={Style.navbar}>
-            <motion.div 
+            <motion.div
               className={Style.logo}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              JD
+              VR
             </motion.div>
-            
+
             {/* Desktop Navigation */}
             <ul className={Style.navLinks}>
-              {['About', 'Work', 'Articles', 'Contact'].map((item, index) => (
+              {['About', 'Work', 'Articles'].map((item, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                 >
-                  <a 
-                    href={`#${item.toLowerCase()}`} 
+                  <a
+                    href={`#${item.toLowerCase()}`}
                     className={Style.navLink}
                   >
                     {item}
                   </a>
                 </motion.li>
               ))}
-              
+
               {/* Theme Toggle */}
               <motion.li
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
               >
-                <button 
-                  onClick={toggleTheme} 
+                <button
+                  onClick={toggleTheme}
                   className={Style.themeToggle}
                   aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
                 >
@@ -108,9 +108,9 @@ const App = () => {
                 </button>
               </motion.li>
             </ul>
-            
+
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className={Style.menuButton}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
@@ -118,7 +118,7 @@ const App = () => {
               <div className={`${Style.hamburger} ${menuOpen ? Style.open : ''}`} />
             </button>
           </nav>
-          
+
           {/* Mobile Menu */}
           <AnimatePresence>
             {menuOpen && (
@@ -139,8 +139,8 @@ const App = () => {
                     {item}
                   </a>
                 ))}
-                <button 
-                  onClick={toggleTheme} 
+                <button
+                  onClick={toggleTheme}
                   className={Style.mobileThemeToggle}
                 >
                   {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
@@ -154,49 +154,48 @@ const App = () => {
           {/* Hero Section */}
           <Section id="hero">
             <div className={Style.heroContent}>
-              <motion.h1 
+              <motion.h1
                 className={Style.heroTitle}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
                 <span className={Style.heroGreeting}>Hello, I'm</span>
-                <span className={Style.heroName}>John Doe</span>
+                <span className={Style.heroName}>Vaishak Rajesh</span>
               </motion.h1>
-              
-              <motion.h2 
+
+              <motion.h2
                 className={Style.heroSubtitle}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                Frontend Developer & UI Designer
+                Full Stack Web Developer | MERN Stack | Cross-Platform
               </motion.h2>
-              
-              <motion.p 
+
+              <motion.p
                 className={Style.heroDescription}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                I create elegant, performant digital experiences with modern web technologies.
-                Currently crafting interfaces at <span className={Style.highlight}>Acme Corp</span>.
+                I am a full stack web developer with in-depth experience in the<span className={Style.highlight}> MERN stack (MongoDB, Express, React, Node.js)</span>, specializing in the end-to-end development of scalable web applications. I also develop cross-platform applications using tools like React Native , enabling consistent performance across web and mobile platforms.
               </motion.p>
-              
-              <motion.div 
+
+              <motion.div
                 className={Style.heroButtons}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                <motion.button 
+                <motion.button
                   className={Style.primaryButton}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   View Projects
                 </motion.button>
-                <motion.button 
+                <motion.button
                   className={Style.secondaryButton}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
@@ -218,32 +217,32 @@ const App = () => {
                 <span className={Style.sectionNumber}>01</span>
                 About Me
               </h2>
-              
+
               <div className={Style.aboutGrid}>
                 <div className={Style.aboutText}>
                   <p>
-                    With over 5 years of experience in frontend development, I specialize in building 
+                    With over 5 years of experience in frontend development, I specialize in building
                     responsive, accessible web applications using React, TypeScript, and modern CSS.
                   </p>
                   <p>
-                    My approach combines technical excellence with thoughtful design, resulting in 
-                    products that are both beautiful and functional. I believe in the power of 
+                    My approach combines technical excellence with thoughtful design, resulting in
+                    products that are both beautiful and functional. I believe in the power of
                     minimalism and focus on creating intuitive user experiences.
                   </p>
-                  
+
                   <div className={Style.aboutDetails}>
                     <div className={Style.detailItem}>
                       <h3>Education</h3>
-                      <p>B.Sc. Computer Science<br/>Stanford University, 2018</p>
+                      <p>B.Sc. Computer Science<br />Stanford University, 2018</p>
                     </div>
                     <div className={Style.detailItem}>
                       <h3>Experience</h3>
-                      <p>Senior Frontend Dev<br/>Acme Corp (2021-Present)</p>
+                      <p>Senior Frontend Dev<br />Acme Corp (2021-Present)</p>
                     </div>
                   </div>
                 </div>
-                
-                <motion.div 
+
+                <motion.div
                   className={Style.aboutImage}
                   whileInView={{ opacity: 1, x: 0 }}
                   initial={{ opacity: 0, x: 50 }}
@@ -262,7 +261,7 @@ const App = () => {
               <span className={Style.sectionNumber}>02</span>
               Selected Work
             </h2>
-            
+
             <div className={Style.workGrid}>
               {[
                 {
@@ -284,7 +283,7 @@ const App = () => {
                   link: "#"
                 }
               ].map((project, index) => (
-                <motion.div 
+                <motion.div
                   key={index}
                   className={Style.workCard}
                   initial={{ opacity: 0, y: 20 }}
@@ -317,7 +316,7 @@ const App = () => {
               <span className={Style.sectionNumber}>03</span>
               Recent Articles
             </h2>
-            
+
             <div className={Style.articlesGrid}>
               {[
                 {
@@ -339,7 +338,7 @@ const App = () => {
                   readTime: "10 min read"
                 }
               ].map((article, index) => (
-                <motion.article 
+                <motion.article
                   key={index}
                   className={Style.articleCard}
                   initial={{ opacity: 0, y: 20 }}
@@ -360,7 +359,7 @@ const App = () => {
           </Section>
 
           {/* Contact Section */}
-          <Section id="contact" dark>
+          {/* <Section id="contact" dark>
             <h2 className={Style.sectionTitle}>
               <span className={Style.sectionNumber}>04</span>
               Get In Touch
@@ -433,17 +432,15 @@ const App = () => {
                   Send Message
                 </motion.button>
               </form>
-            </div>
-          </Section>
+            </div> */}
         </main>
 
         {/* Footer */}
         <footer className={Style.footer}>
           <div className={Style.footerContent}>
-            <div className={Style.footerLogo}>JD</div>
+            <div className={Style.footerLogo}>VR</div>
             <p className={Style.footerText}>
-              Designed and built by John Doe<br/>
-              © {new Date().getFullYear()} All rights reserved
+              Designed and built by Vaishak Rajesh<br />
             </p>
           </div>
         </footer>
