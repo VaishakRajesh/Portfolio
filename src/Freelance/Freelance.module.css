@@ -1,0 +1,466 @@
+/* Base Styles */
+:root {
+  --primary: #6e45e2;
+  --secondary: #88d3ce;
+  --accent: #ff7e5f;
+  --dark: #0f0f1a;
+  --light: #f8f9fa;
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63);
+  color: var(--light);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.section {
+  padding: 10rem 5%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Shapes */
+.floatingShape1, .floatingShape2, .floatingShape3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  z-index: 1;
+  will-change: transform;
+}
+
+.floatingShape1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: 20%;
+  left: 10%;
+}
+
+.floatingShape2 {
+  width: 600px;
+  height: 600px;
+  background: var(--accent);
+  bottom: 10%;
+  right: 5%;
+}
+
+.floatingShape3 {
+  width: 300px;
+  height: 300px;
+  background: var(--secondary);
+  top: 50%;
+  left: 50%;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.titleLine {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  padding: 0.2em 0;
+}
+
+.titleLine::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.hero:hover .titleLine::after {
+  transform: scaleX(1);
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+}
+
+.scrollIndicator {
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 15px;
+  position: relative;
+  margin: 2rem auto 0;
+}
+
+.scrollIndicator::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--light);
+  border-radius: 50%;
+  animation: scrollBounce 2s infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, 15px);
+    opacity: 0.5;
+  }
+}
+
+/* Section Header */
+.sectionHeader {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.titleUnderline {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  margin: 0 auto;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1) 0.3s;
+}
+
+.section:hover .titleUnderline {
+  transform: scaleX(1);
+}
+
+/* Projects Grid */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.projectCard {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.projectImageWrapper {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #3a1c71, #d76d77, #ffaf7b);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  transition: var(--transition);
+}
+
+.projectOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0;
+  transition: var(--transition);
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+}
+
+.projectInfo {
+  padding: 2rem;
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.projectTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.projectCard:hover .projectTitle::after {
+  width: 80px;
+}
+
+.projectTags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-block;
+  height: 1.5rem;
+  width: 4rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+}
+
+.projectCard:hover .projectOverlay {
+  opacity: 1;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.1);
+}
+
+/* Horizontal Scroll Section */
+.horizontalSection {
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+}
+
+.horizontalContainer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  will-change: transform;
+}
+
+.horizontalItem {
+  min-width: 80vw;
+  height: 80%;
+  margin-right: 4rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 30px;
+  display: flex;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.horizontalImage {
+  width: 50%;
+  background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+}
+
+.horizontalContent {
+  width: 50%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.horizontalContent h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.horizontalContent p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Skills Grid */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skillCard {
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: var(--transition);
+  transform-style: preserve-3d;
+}
+
+.skillCard:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-10px);
+}
+
+.skillIcon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+.skillName {
+  height: 1.5rem;
+  width: 80%;
+  background: rgba(255,255,255,0.1);
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.skillLevel {
+  height: 6px;
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.levelBar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 1s ease 0.3s;
+}
+
+.skillCard:hover .levelBar {
+  width: 80%;
+}
+
+/* Contact Section */
+.contact {
+  text-align: center;
+  padding: 15rem 5%;
+}
+
+.contactTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 3rem;
+}
+
+.contactButton {
+  position: relative;
+  background: transparent;
+  color: var(--light);
+  border: 2px solid rgba(255,255,255,0.3);
+  padding: 1.5rem 4rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition);
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.buttonHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  z-index: -1;
+  transform: translateY(110%);
+  transition: var(--transition);
+}
+
+.contactButton:hover {
+  border-color: transparent;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(110, 69, 226, 0.4);
+}
+
+.contactButton:hover .buttonHover {
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 5%;
+  }
+  
+  .horizontalItem {
+    min-width: 90vw;
+    flex-direction: column;
+    height: 70%;
+  }
+  
+  .horizontalImage, .horizontalContent {
+    width: 100%;
+  }
+  
+  .horizontalContent {
+    padding: 2rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: 1fr;
+  }
+}
