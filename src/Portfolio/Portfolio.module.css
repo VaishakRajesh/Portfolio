@@ -30,7 +30,9 @@
 }
 
 /* Floating Shapes */
-.floatingShape1, .floatingShape2, .floatingShape3 {
+.floatingShape1,
+.floatingShape2,
+.floatingShape3 {
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
@@ -72,6 +74,25 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  /* controls size of SVG icons */
+  width: 100px;
+  height: 50px;
+  color: #f8f9fa;
+  /* Or any other color you want */
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.icon:hover {
+  color: #aeaeae;
+  /* Slight change on hover (optional) */
 }
 
 .heroContent {
@@ -122,7 +143,7 @@
 .scrollIndicator {
   width: 30px;
   height: 50px;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
   position: relative;
   margin: 2rem auto 0;
@@ -142,10 +163,13 @@
 }
 
 @keyframes scrollBounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(-50%, 0);
     opacity: 1;
   }
+
   50% {
     transform: translate(-50%, 15px);
     opacity: 0.5;
@@ -188,13 +212,13 @@
 }
 
 .projectCard {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   overflow: hidden;
   transition: var(--transition);
   transform-style: preserve-3d;
   will-change: transform;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .projectImageWrapper {
@@ -218,7 +242,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   opacity: 0;
   transition: var(--transition);
   display: flex;
@@ -261,7 +285,7 @@
   display: inline-block;
   height: 1.5rem;
   width: 4rem;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
 }
 
@@ -291,12 +315,12 @@
   min-width: 80vw;
   height: 80%;
   margin-right: 4rem;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 30px;
   display: flex;
   overflow: hidden;
   backdrop-filter: blur(10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .horizontalImage {
@@ -331,7 +355,7 @@
 }
 
 .skillCard {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
   padding: 2rem;
   transition: var(--transition);
@@ -339,14 +363,14 @@
 }
 
 .skillCard:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-10px);
 }
 
 .skillIcon {
   width: 60px;
   height: 60px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   margin-bottom: 1.5rem;
 }
@@ -354,7 +378,7 @@
 .skillName {
   height: 1.5rem;
   width: 80%;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   margin-bottom: 1rem;
   border-radius: 4px;
 }
@@ -362,7 +386,7 @@
 .skillLevel {
   height: 6px;
   width: 100%;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -393,7 +417,7 @@
   position: relative;
   background: transparent;
   color: var(--light);
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   padding: 1.5rem 4rem;
   font-size: 1.2rem;
   font-weight: 600;
@@ -432,9 +456,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -445,21 +471,22 @@
   .section {
     padding: 6rem 5%;
   }
-  
+
   .horizontalItem {
     min-width: 90vw;
     flex-direction: column;
     height: 70%;
   }
-  
-  .horizontalImage, .horizontalContent {
+
+  .horizontalImage,
+  .horizontalContent {
     width: 100%;
   }
-  
+
   .horizontalContent {
     padding: 2rem;
   }
-  
+
   .skillsGrid {
     grid-template-columns: 1fr;
   }

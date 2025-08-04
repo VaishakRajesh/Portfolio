@@ -3,6 +3,36 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import styles from './Portfolio.module.css';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { SiLeetcode } from "react-icons/si";
+import img1 from '../Img/mern.png';
+import img2 from '../Img/mern.png';
+import img3 from '../Img/mern.png';
+import img4 from '../Img/mern.png';
+
+const projectData = [
+  {
+    title: "Project 1",
+    tags: ["React", "CSS", "Firebase"],
+    image: img1,
+  },
+  {
+    title: "Project 2",
+    tags: ["Node.js", "MongoDB", "Express"],
+    image: img2,
+  },
+  {
+    title: "Project 3",
+    tags: ["TypeScript", "GraphQL", "Apollo"],
+    image: img3,
+  },
+  {
+    title: "Project 4",
+    tags: ["Python", "Flask", "PostgreSQL"],
+    image: img4,
+  },
+];
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -203,7 +233,34 @@ const Portfolio = () => {
             <span className={styles.titleLine}>Vaishak Rajesh</span>
             {/* <span className={styles.titleLine}>Experiences </span> */}
           </h1>
-          <p className={styles.heroSubtitle}>MERN Stack Developer | BCA Graduate | Full Stack Developer | Coding Enthusiast</p>
+          <p className={styles.heroSubtitle}> BCA Graduate | Full Stack Developer | Coding Enthusiast | MERN Stack Developer</p>
+          <p className={styles.heroSubtitle}>
+            <a
+              href="https://www.linkedin.com/in/vaishak-rajesh-98573a2a5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.icon}
+            >
+              <LinkedInIcon sx={{ fontSize: 50 }} />
+            </a>
+
+            <a
+              href="https://github.com/vaishakrajesh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.icon}
+            >
+              <GitHubIcon sx={{ fontSize: 50 }} />
+            </a>
+            <a
+              href="https://leetcode.com/vaishak_rajesh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.icon}
+            >
+              <SiLeetcode />
+            </a>
+          </p>
           <p className={styles.heroSubtitle}>Scroll to explore my work</p>
           <div className={styles.scrollIndicator}></div>
         </div>
@@ -217,21 +274,25 @@ const Portfolio = () => {
         </div>
 
         <div className={styles.projectsGrid}>
-          {[...Array(4)].map((_, i) => (
+          {projectData.map((project, i) => (
             <div
               key={i}
               className={styles.projectCard}
               ref={el => projectRefs.current[i] = el}
             >
               <div className={styles.projectImageWrapper}>
-                <div className={styles.projectImage}></div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className={styles.projectImage}
+                />
                 <div className={styles.projectOverlay}></div>
               </div>
               <div className={styles.projectInfo}>
-                <h3 className={styles.projectTitle}>Project {i + 1}</h3>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
                 <div className={styles.projectTags}>
-                  {[...Array(3)].map((_, j) => (
-                    <span key={j} className={styles.tag}></span>
+                  {project.tags.map((tag, j) => (
+                    <span key={j} className={styles.tag}>{tag}</span>
                   ))}
                 </div>
               </div>
