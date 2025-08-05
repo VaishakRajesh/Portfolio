@@ -6,45 +6,66 @@ import styles from './Portfolio.module.css';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { SiLeetcode } from "react-icons/si";
+import { useState } from 'react';
 import img1 from '../Img/mern.png';
 import img2 from '../Img/mern.png';
 import img3 from '../Img/mern.png';
 import img4 from '../Img/mern.png';
 
-const projectData = [
-  {
-    title: "Project 1",
-    tags: ["React", "CSS", "Firebase"],
-    image: img1,
-  },
-  {
-    title: "Project 2",
-    tags: ["Node.js", "MongoDB", "Express"],
-    image: img2,
-  },
-  {
-    title: "Project 3",
-    tags: ["TypeScript", "GraphQL", "Apollo"],
-    image: img3,
-  },
-  {
-    title: "Project 4",
-    tags: ["Python", "Flask", "PostgreSQL"],
-    image: img4,
-  },
-];
-
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 const Portfolio = () => {
+  const projectRefs = useRef([]);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [animatingProject, setAnimatingProject] = useState(null);
   const containerRef = useRef(null);
   const heroRef = useRef(null);
-  const projectRefs = useRef([]);
   const skillRefs = useRef([]);
   const sectionRefs = useRef([]);
   const floatingShapes = useRef([]);
   const magneticItems = useRef([]);
 
+  const openProject = (project, index) => {
+    setAnimatingProject(index);
+    setTimeout(() => {
+      setSelectedProject(project);
+      setAnimatingProject(null);
+    }, 300);
+  };
+
+
+  const projectData = [
+    {
+      title: "Project 1",
+      tags: ["React", "CSS", "Firebase"],
+      image: img1,
+      description: "A modern web application built with React and Firebase for real-time data management.",
+    },
+    {
+      title: "Project 2",
+      tags: ["Node.js", "MongoDB", "Express"],
+      image: img2,
+      description: "A robust backend API solution with Node.js, Express, and MongoDB for scalable data operations.",
+    },
+    {
+      title: "Project 3",
+      tags: ["TypeScript", "GraphQL", "Apollo"],
+      image: img3,
+      description: "An advanced data-driven application leveraging TypeScript, GraphQL, and Apollo for efficient data querying.",
+    },
+    {
+      title: "Project 4",
+      tags: ["Python", "Flask", "PostgreSQL"],
+      image: img4,
+      description: "A powerful web application built with Python Flask framework and PostgreSQL database for complex data relationships.",
+    },
+  ];
+
+
+
+  const closeProject = () => {
+    setSelectedProject(null);
+  };
   // Initialize animations
   useEffect(() => {
     // Register ScrollTrigger refresh on images load
@@ -269,16 +290,17 @@ const Portfolio = () => {
       {/* Projects Section */}
       <section className={`${styles.projects} ${styles.section}`} ref={el => sectionRefs.current[1] = el}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Featured Projects</h2>
+          <h2 className={styles.sectionTitle}>Projects</h2>
           <div className={styles.titleUnderline}></div>
         </div>
-
+        {/* Projects Grid */}
         <div className={styles.projectsGrid}>
           {projectData.map((project, i) => (
             <div
               key={i}
-              className={styles.projectCard}
+              className={`${styles.projectCard} ${animatingProject === i ? styles.animating : ''}`}
               ref={el => projectRefs.current[i] = el}
+              onClick={() => openProject(project, i)}
             >
               <div className={styles.projectImageWrapper}>
                 <img
@@ -286,7 +308,11 @@ const Portfolio = () => {
                   alt={project.title}
                   className={styles.projectImage}
                 />
-                <div className={styles.projectOverlay}></div>
+                <div className={styles.projectOverlay}>
+                  <div className={styles.expandIndicator}>
+                    <span>View Details</span>
+                  </div>
+                </div>
               </div>
               <div className={styles.projectInfo}>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
@@ -299,37 +325,71 @@ const Portfolio = () => {
             </div>
           ))}
         </div>
-      </section>
+
+        {/* Modal */}
+        {selectedProject && (
+          <div className={styles.modalOverlay} onClick={closeProject}>
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+              <button className={styles.closeButton} onClick={closeProject}>
+                ×
+              </button>
+              <div className={styles.modalHeader}>
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className={styles.modalImage}
+                />
+                <div className={styles.modalInfo}>
+                  <h2>{selectedProject.title}</h2>
+                  <p>{selectedProject.description}</p>
+                  <div className={styles.modalTags}>
+                    {selectedProject.tags.map((tag, j) => (
+                      <span key={j} className={styles.modalTag}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </section >
 
       {/* Horizontal Scroll Section */}
-      <section className={`${styles.horizontalSection} horizontal-section ${styles.section}`} ref={el => sectionRefs.current[2] = el}>
+      <div className={styles.sectionHeader}>
+        <h2 className={styles.sectionTitle}>Education</h2>
+        <div className={styles.titleUnderline}></div>
+      </div>
+      < section className={`${styles.horizontalSection} horizontal-section ${styles.section}`} ref={el => sectionRefs.current[2] = el} >
         <div className={`${styles.horizontalContainer} horizontal-container`}>
           <div className={styles.horizontalItem}>
             <div className={styles.horizontalImage}></div>
             <div className={styles.horizontalContent}>
-              <h3>Case Study 1</h3>
-              <p>Detailed project analysis and results</p>
+              <h3>Bachelor of Computer Applications</h3>
+              <p>St. Mary’s College of Commerce and Management Studies Thuruthiply</p>
+              <p>2022-2025</p>
             </div>
           </div>
           <div className={styles.horizontalItem}>
             <div className={styles.horizontalImage}></div>
             <div className={styles.horizontalContent}>
-              <h3>Case Study 3</h3>
-              <p>Detailed project analysis and results</p>
+              <h3>Plus Two </h3>
+              <p>St Joseph Higher Secondary School Kizhakkambalam</p>
+              <p>2020-2022</p>
             </div>
           </div>
           <div className={styles.horizontalItem}>
             <div className={styles.horizontalImage}></div>
             <div className={styles.horizontalContent}>
-              <h3>Case Study 7</h3>
-              <p>Detailed project analysis and results</p>
+              <h3>SSLC</h3>
+              <p>St. Mary's Higher Secondary School morakkala</p>
+              <p>2020</p>
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Skills Section */}
-      <section className={`${styles.skills} ${styles.section}`} ref={el => sectionRefs.current[3] = el}>
+      < section className={`${styles.skills} ${styles.section}`} ref={el => sectionRefs.current[3] = el} >
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Technical Skills</h2>
           <div className={styles.titleUnderline}></div>
@@ -350,10 +410,10 @@ const Portfolio = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section >
 
       {/* Contact CTA */}
-      <section className={`${styles.contact} ${styles.section}`} ref={el => sectionRefs.current[4] = el}>
+      < section className={`${styles.contact} ${styles.section}`} ref={el => sectionRefs.current[4] = el} >
         <div className={styles.contactContent}>
           <h2 className={styles.contactTitle}>Let's Create Something Amazing</h2>
           <button
@@ -364,8 +424,8 @@ const Portfolio = () => {
             <div className={styles.buttonHover}></div>
           </button>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
 
