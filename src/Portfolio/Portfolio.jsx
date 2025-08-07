@@ -8,9 +8,9 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { SiLeetcode } from "react-icons/si";
 import { useState } from 'react';
 import img1 from '../Img/mern.png';
-import img2 from '../Img/mern.png';
-import img3 from '../Img/mern.png';
-import img4 from '../Img/mern.png';
+import img2 from '../Img/php.png';
+import img3 from '../Img/flask.jpg';
+// import img4 from '../Img/mern.png';
 import { IoLogoJavascript } from "react-icons/io5";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
@@ -37,29 +37,29 @@ const Portfolio = () => {
 
   const projectData = [
     {
-      title: "Project 1",
-      tags: ["React", "CSS", "Firebase"],
+      title: "Custom Core",
+      tags: ["React", "Node.js", "MongoDB", "Express"],
       image: img1,
-      description: "A modern web application built with React and Firebase for real-time data management.",
+      description: "This project enables users to easily customize their PC without needing extensive technical knowledge, while also streamlining the booking process. It is developed using the MERN stack — which stands for MongoDB, Express.js, React.js, and Node.js — ensuring a robust and efficient full-stack application.",
     },
     {
-      title: "Project 2",
-      tags: ["Node.js", "MongoDB", "Express"],
+      title: "AutoTrack",
+      tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
       image: img2,
-      description: "A robust backend API solution with Node.js, Express, and MongoDB for scalable data operations.",
+      description: "AutoTrack is a useful project designed to analyze details of cars and bikes, allowing users to book test trials and schedule services at nearby showrooms. It is developed with a frontend using HTML, CSS, and JavaScript, and a backend powered by PHP and MySQL.",
     },
     {
-      title: "Project 3",
-      tags: ["TypeScript", "GraphQL", "Apollo"],
+      title: "Gold Price Predicton",
+      tags: ["HTML", "CSS", "JavaScript", "Python", "Flask"],
       image: img3,
-      description: "An advanced data-driven application leveraging TypeScript, GraphQL, and Apollo for efficient data querying.",
-    },
-    {
-      title: "Project 4",
-      tags: ["Python", "Flask", "PostgreSQL"],
-      image: img4,
-      description: "A powerful web application built with Python Flask framework and PostgreSQL database for complex data relationships.",
-    },
+      description: "This project uses machine learning technology to provide the most accurate predictions of gold prices.",
+    }
+    // {
+    //   title: "Project 4",
+    //   tags: ["Python", "Flask", "PostgreSQL"],
+    //   image: img4,
+    //   description: "A powerful web application built with Python Flask framework and PostgreSQL database for complex data relationships.",
+    // },
   ];
 
 
@@ -395,32 +395,7 @@ const Portfolio = () => {
           <h2 className={styles.sectionTitle}>Technical Skills</h2>
           <div className={styles.titleUnderline}></div>
         </div>
-
-        {/* <div className={styles.skillsGrid}>
-          <div
-            // key={i}
-            className={styles.skillCard}
-          // ref={el => skillRefs.current[i] = el}
-          >
-            <div className={styles.skillIcon}></div>
-            <div className={styles.skillName}></div>
-            <div className={styles.skillLevel}>
-              <div className={styles.levelBar}></div>
-            </div>
-          </div>
-          <div
-            // key={i}
-            className={styles.skillCard}
-          // ref={el => skillRefs.current[i] = el}
-          >
-            <div className={styles.skillIcon}></div>
-            <div className={styles.skillName}></div>
-            <div className={styles.skillLevel}>
-              <div className={styles.levelBar}></div>
-            </div>
-          </div>
-        </div> */}
-        <div className={styles.skillCard}>
+        <div className={styles.skillsGrid}>
           <div className={styles.skillCard}>
             <div className={styles.skillIcon}>
               <svg viewBox="0 0 24 24" fill="#F7DF1E">
@@ -428,9 +403,9 @@ const Portfolio = () => {
               </svg>
             </div>
             <div className={styles.skillName}>JavaScript</div>
-            <div className={styles.skillLevel}>
+            {/* <div className={styles.skillLevel}>
               <div className={styles.levelBar}></div>
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.skillCard}>
@@ -440,9 +415,9 @@ const Portfolio = () => {
               </svg>
             </div>
             <div className={styles.skillName}>Python</div>
-            <div className={styles.skillLevel}>
+            {/* <div className={styles.skillLevel}>
               <div className={styles.levelBar}></div>
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.skillCard}>
@@ -454,9 +429,9 @@ const Portfolio = () => {
               </svg>
             </div>
             <div className={styles.skillName}>C++</div>
-            <div className={styles.skillLevel}>
+            {/* <div className={styles.skillLevel}>
               <div className={styles.levelBar}></div>
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.skillCard}>
@@ -467,9 +442,9 @@ const Portfolio = () => {
               </svg>
             </div>
             <div className={styles.skillName}>C</div>
-            <div className={styles.skillLevel}>
+            {/* <div className={styles.skillLevel}>
               <div className={styles.levelBar}></div>
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.skillCard}>
@@ -479,9 +454,9 @@ const Portfolio = () => {
               </svg>
             </div>
             <div className={styles.skillName}>React.js</div>
-            <div className={styles.skillLevel}>
+            {/* <div className={styles.skillLevel}>
               <div className={styles.levelBar}></div>
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.skillCard}>
@@ -491,9 +466,9 @@ const Portfolio = () => {
               </svg>
             </div>
             <div className={styles.skillName}>Java</div>
-            <div className={styles.skillLevel}>
+            {/* <div className={styles.skillLevel}>
               <div className={styles.levelBar}></div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section >
@@ -501,14 +476,17 @@ const Portfolio = () => {
       {/* Contact CTA */}
       < section className={`${styles.contact} ${styles.section}`} ref={el => sectionRefs.current[4] = el} >
         <div className={styles.contactContent}>
-          <h2 className={styles.contactTitle}>Let's Create Something Amazing</h2>
+          <h2 className={styles.contactTitle}>Create Something Amazing</h2>
           <button
             className={styles.contactButton}
             ref={el => magneticItems.current[0] = el}
+            onClick={() => window.location.href =
+              'mailto:vaishakrajesh42@gmail.com?subject=Inquiry%20Regarding%20Your%20Portfolio&body=Hello,%0D%0A%0D%0AI%20have%20reviewed%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20potential%20opportunity.%20Please%20let%20me%20know%20a%20convenient%20time%20to%20connect.%0D%0A%0D%0ABest%20regards,'}
           >
-            <span>Get In Touch</span>
+            <span>Contact on Email</span>
             <div className={styles.buttonHover}></div>
           </button>
+
         </div>
       </section >
     </div >
