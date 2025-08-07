@@ -288,6 +288,13 @@ const Portfolio = () => {
         </div>
       </section>
 
+      <div className={styles.profilehead}>Introducing Myself</div>
+      <div className={styles.profile}>
+        <div className={styles.profiletext}>
+          I’m a BCA graduate with a strong foundation in computer science and a deep enthusiasm for software development. I specialize in Full-Stack Web Development and have a growing interest in Data Science and Software Engineering. I enjoy building modern, efficient, and user-centric digital solutions — always eager to learn, explore, and grow in the tech world.
+        </div>
+      </div>
+
       {/* Projects Section */}
       <section className={`${styles.projects} ${styles.section}`} ref={el => sectionRefs.current[1] = el}>
         <div className={styles.sectionHeader}>
